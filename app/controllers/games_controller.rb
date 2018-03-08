@@ -11,14 +11,14 @@ class GamesController < ApplicationController
   end
 
   def guess_a_number
-    the_number = 25
-    guess = params["guess"]
+    the_number = 36
+    guess = params["guess"].to_i
 
-    if guess.to_i == the_number
+    if guess == the_number
       render json: {result: "You Win!"}
-    elsif guess.to_i < the_number
+    elsif guess < the_number
       render json: {result: "Try a higher number!"}
-    else
+    elsif guess > the_number
       render json: {result: "Try a lower number!"}
     end
   end
